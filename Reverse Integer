@@ -1,0 +1,19 @@
+class Solution(object):
+    def reverse(self, x):
+        """
+        :type x: int
+        :rtype: int
+        """
+        
+        minus_flag = 0
+        if x < 0:
+            minus_flag = 1
+        x = abs(x)
+        x = str(x)
+        x = x[::-1]
+        x = int(x)
+        if minus_flag:
+            x = -x
+        if x > 2147483647 or x < -2147483648:
+            return 0
+        return x
