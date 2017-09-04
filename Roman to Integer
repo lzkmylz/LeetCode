@@ -1,0 +1,38 @@
+class Solution(object):
+    def romanToInt(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        def backNumber(s):
+            if s == "I":
+                return 1
+            if s == "V":
+                return 5
+            if s == "X":
+                return 10
+            if s == "L":
+                return 50
+            if s == "C":
+                return 100
+            if s == "D":
+                return 500
+            if s == "M":
+                return 1000
+        sum_integer = 0
+        count = 0
+        while count < len(s):
+            if  count+1 < len(s):
+                currentNumber = backNumber(s[count])
+                forwordNumber = backNumber(s[count+1])
+                if currentNumber < forwordNumber:
+                    sum_integer = sum_integer + forwordNumber - currentNumber
+                    count = count + 2
+                    continue
+                sum_integer = sum_integer + currentNumber
+                count = count + 1
+            else:
+                currentNumber = backNumber(s[count])
+                sum_integer = sum_integer + currentNumber
+                count = count + 1          
+        return sum_integer
