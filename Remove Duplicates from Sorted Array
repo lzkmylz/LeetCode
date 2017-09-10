@@ -1,0 +1,21 @@
+class Solution(object):
+    def removeDuplicates(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        length = len(nums)
+        s = set()
+        i = 0
+        while i < length:
+            current = nums[i]
+            if current in s:
+                nums.remove(current)
+                nums.append(current)
+                length -= 1
+            else:
+                s.add(current)
+                i += 1
+        length = len(s)
+        return length
+        
